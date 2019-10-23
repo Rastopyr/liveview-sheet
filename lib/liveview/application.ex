@@ -9,7 +9,8 @@ defmodule SheetLive.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      SheetLiveWeb.Endpoint
+      SheetLiveWeb.Endpoint,
+      {SheetLive.Sheet, %SheetLive.Sheet{}}
       # Starts a worker by calling: SheetLive.Worker.start_link(arg)
       # {SheetLive.Worker, arg},
     ]

@@ -12,12 +12,10 @@ config :liveview,
 
 # Configures the endpoint
 config :liveview, SheetLiveWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", port: 4000],
   secret_key_base: "RsKay0nQ4x5gJTjIvY4A5ClAt2EWAmMFa9SuMauZFtYj9E4TbtIPRsx/vSCaW9kp",
   render_errors: [view: SheetLiveWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SheetLive.PubSub, adapter: Phoenix.PubSub.PG2]
-
-config :liveview, SheetLiveWeb.Endpoint,
+  pubsub: [name: SheetLive.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [
     signing_salt: "somesecret"
   ]

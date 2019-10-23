@@ -2,6 +2,6 @@ defmodule SheetLiveWeb.PageController do
   use SheetLiveWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    live_render(conn, SheetLiveWeb.SheetLobby)
   end
 end
