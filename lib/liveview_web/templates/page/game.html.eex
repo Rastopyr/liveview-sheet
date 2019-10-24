@@ -1,0 +1,3 @@
+<%= unless is_nil(@username) do %>
+    <h4>CurrentUser: <%= @username %></h4>
+  <%= end %>

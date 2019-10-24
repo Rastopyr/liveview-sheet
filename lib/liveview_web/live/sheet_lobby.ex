@@ -28,6 +28,8 @@ defmodule SheetLiveWeb.SheetLobby do
   def mount(_session, socket) do
     if connected?(socket), do: Process.send_after(self(), :tick, 1000)
 
+    is
+
     {:ok,
      assign(socket,
        state: %SheetLive.Sheet{},

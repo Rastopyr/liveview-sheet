@@ -1,6 +1,14 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
-</section>
+<div class="lobby">
+  <h1>Game Lobby</h1>
 
-<%= live_render(@conn, SheetLiveWeb.SheetLive) %>
+  <%= unless is_nil(@username) do %>
+    <h4><%= @username %></h4>
+  <%= end %>
+
+  <form method="POST" action="/login">
+    <input type="hidden" value="<%= @token %>" name="_csrf_token"/>
+    <input name="user[username]" type="text" phx-debounce="blur" />
+
+    <button type="submit">Save</button>
+  </form>
+</div>
