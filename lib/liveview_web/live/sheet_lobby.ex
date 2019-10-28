@@ -17,18 +17,12 @@ defmodule SheetLiveWeb.SheetLobby do
               <button type="submit" phx-disable-with="Saving...">Save</button>
             </form>
           <% end %>
-
-
-
-
       </div>
     """
   end
 
   def mount(_session, socket) do
     if connected?(socket), do: Process.send_after(self(), :tick, 1000)
-
-    is
 
     {:ok,
      assign(socket,

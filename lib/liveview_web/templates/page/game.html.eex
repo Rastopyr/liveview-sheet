@@ -1,3 +1,7 @@
 <%= unless is_nil(@username) do %>
     <h4>CurrentUser: <%= @username %></h4>
-  <%= end %>
+
+    <%= live_render(@conn, SheetLiveWeb.SheetGame, session: %{
+      username: @username
+    }) %>
+<%= end %>
