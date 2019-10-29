@@ -354,6 +354,17 @@ template {
 /* assets/css/app.css */
 @import "../../deps/phoenix_live_view/assets/css/live_view.css";
 
+.cell {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.cell .background {
+  height: 100%;
+  width: 100%;
+}
+
 .cell.inactive .background {
   opacity: 0.5;
 }

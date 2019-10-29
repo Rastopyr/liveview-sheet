@@ -1,5 +1,5 @@
 defmodule SheetLive.Sheet do
-  # alias SheetLiveWeb.SheetState
+  use GenServer
 
   @palette %{
     "0" => "white",
@@ -21,8 +21,6 @@ defmodule SheetLive.Sheet do
             ],
             positions: %{},
             participants: %{}
-
-  use GenServer
 
   def start_link(opts) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)

@@ -15,17 +15,11 @@ defmodule SheetLiveWeb.SheetGame do
                     phx-value-row="<%= rowIndex %>"
                     phx-value-cell="<%= cellIndex %>"
                     class="cell <%= unless isPlaced?(@state.positions, rowIndex, cellIndex) do %>inactive<% end %>"
-                    style="
-                      display: inline-block;
-                      width: 40px; height: 40px;
-                    "
                   >
                     <div
                       class="background"
                       style="
-                        width: 100%;
                         background-color: <%= SheetLive.Sheet.get_color(cell) %>;
-                        height: 100%;
                       "
                     >
                     </div>
@@ -65,8 +59,6 @@ defmodule SheetLiveWeb.SheetGame do
         rowIndex: rowIndex,
         cellIndex: cellIndex
       })
-
-    # IO.inspect(socket.assigns.state.positions[rowIndex] != nil)
 
     {:noreply,
      assign(socket,
