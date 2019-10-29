@@ -353,3 +353,11 @@ template {
 @import "./phoenix.css";
 /* assets/css/app.css */
 @import "../../deps/phoenix_live_view/assets/css/live_view.css";
+
+.cell.inactive .background {
+  opacity: 0.5;
+}
+
+.cell.inactive:hover .background {
+  opacity: 1;
+}

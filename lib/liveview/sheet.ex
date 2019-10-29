@@ -19,6 +19,7 @@ defmodule SheetLive.Sheet do
               ~w(0 0 2 2 0 1 1 0  0),
               ~w(0 0 0 0 0 0 0 0 0 0)
             ],
+            positions: %{},
             participants: %{}
 
   use GenServer
@@ -34,7 +35,7 @@ defmodule SheetLive.Sheet do
   def connected(participant), do: GenServer.call(__MODULE__, {:connected, participant})
   def disconnected(participant), do: GenServer.call(__MODULE__, {:disconnected, participant})
   def get_state(), do: GenServer.call(__MODULE__, {:get_state})
-  # def placeCell(cell, position), do: GenServer.call(__MODULE__, {:placeCell, cell, position})
+  def place(placeEvent), do: GenServer.call(__MODULE__, {:place, placeEvent})
 
   def get_color(index), do: Map.get(@palette, index)
 
@@ -51,8 +52,24 @@ defmodule SheetLive.Sheet do
     {:reply, nextState, nextState}
   end
 
-  def handle_call({:get_state}, _, state) do
-    {:reply, state}
+  def handle_call({:place, placeEvent}, _, state) do
+    %{rowIndex: rowIndex, cellIndex: cellIndex} = placeEvent
+
+    rowMap =
+      state
+      |> Map.get(:positions)
+      |> Map.get(rowIndex)
+
+    nextRowMap =
+      case rowMap do
+        nil -> %{cellIndex => placeEvent.username}
+        _ -> Map.put(rowMap, cellIndex, placeEvent.username)
+      end
+
+    nextPositions = Map.put(state.positions, rowIndex, nextRowMap)
+    nextState = Map.put(state, :positions, nextPositions)
+
+    {:reply, nextState, nextState}
   end
 
   def handle_call(_, _, state) do
