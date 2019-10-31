@@ -20,6 +20,7 @@ defmodule SheetLiveWeb.Router do
 
     get "/", PageController, :index
     get "/game", PageController, :game
+    get "/svg", PageController, :svg
 
     post "/login", PageController, :login
   end
