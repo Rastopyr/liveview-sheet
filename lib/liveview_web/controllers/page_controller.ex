@@ -28,4 +28,8 @@ defmodule SheetLiveWeb.PageController do
   def svg(conn, _params) do
     render(conn, "svg.html")
   end
+
+  def chart(conn, _params) do
+    render(conn, "chart.html")
+  end
 end
